@@ -1,0 +1,10 @@
+name: SaladMaker
+options:
+  bundleIdPrefix: montanha
+targets:
+  SaladMaker:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.4"
+    sources:
+      - SaladMaker
