@@ -1,10 +1,10 @@
 target 'DesafioGithub' do
-  pod 'Alamofire'
-  pod 'SDWebImage', :modular_headers => true
+#  pod 'Alamofire'
+#  pod 'SDWebImage', :modular_headers => true
 end
 
 target 'DesafioGithubTests' do
-  pod 'SDWebImage', :modular_headers => true
+#  pod 'SDWebImage', :modular_headers => true
 end
 
 post_install do |installer|

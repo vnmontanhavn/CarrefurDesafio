@@ -66,6 +66,4 @@ extension Model: CallResponseDelegate {
     func fail(errorMessage: String) {
         delegate?.showError(message: errorMessage)
     }
-    
-    
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import SDWebImage
+//import SDWebImage
 
 class DetailViewController: UIViewController {
     

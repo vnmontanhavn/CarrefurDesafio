@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import SDWebImage
 
 class DetailImageCell: UITableViewCell {
     lazy var image = UIImageView(frame: .zero)
@@ -16,7 +15,10 @@ class DetailImageCell: UITableViewCell {
         let url = URL(string: viewModel.imageURL)
         self.image.translatesAutoresizingMaskIntoConstraints = false
         self.image.contentMode = .scaleAspectFit
-        self.image.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder"))
+        self.image.image = (self.image.image == nil) ? UIImage(named: "placeholder") : self.image.image
+        if let url = url {
+            self.image.load(url: url)
+        }
         self.addSubview(self.image)
         self.setupConstrants()
     }

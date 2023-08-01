@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import SDWebImage
 
 class UserListCell: UITableViewCell {
     
@@ -37,7 +36,10 @@ class UserListCell: UITableViewCell {
         let url = URL(string: urlString)
         self.image.translatesAutoresizingMaskIntoConstraints = false
         self.image.contentMode = .scaleAspectFit
-        self.image.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder"))
+        self.image.image = UIImage(named: "placeholder")
+        if let url = url {
+            self.image.load(url: url)
+        }
         self.image.clipsToBounds = true
         self.image.layer.cornerRadius = 25
     }
@@ -63,5 +65,19 @@ class UserListCell: UITableViewCell {
 extension UserListCell: CellProtocol {
     func height() -> CGFloat {
         return 70
+    }
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
     }
 }
